@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Burger Wheels · um runner sobre acessibilidade urbana</title>
+  <meta name="description" content="Um menino em cadeira de rodas desce a Avenida Paulista. Os obstáculos são a falta de acessibilidade. Jogue o protótipo no navegador.">
+  <meta property="og:title" content="Burger Wheels">
+  <meta property="og:description" content="Um runner sobre a cidade que ainda não é para todo mundo. Jogue no navegador.">
+  <meta property="og:image" content="assets/logo1.png">
+  <link rel="icon" href="assets/logo2.png">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <style>
+    body { margin: 0; background: #0F1220; color: #EDF0FA; font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif; }
+    a { color: #FF9E1F; text-decoration: none; } a:hover { color: #FFB84D; }
+    h1, h2, h3 { font-family: 'Fredoka', 'Arial Rounded MT Bold', 'Segoe UI', sans-serif; margin: 0; }
+    .grain { background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 4px 4px; }
+    @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    .flutua { animation: flutuar 4.5s ease-in-out infinite; }
+  
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    .site { background: #0F1220; overflow: hidden; }
+    .desktop { max-width: 1440px; margin: 0 auto; }
+    .mobile { display: none; width: 100%; max-width: 100%; }
+    .mobile img, .mobile svg { max-width: 100%; }
+    a.nav { color: #B3BDD1; } a.nav:hover { color: #FFFFFF; }
+    .moldura { width: 340px; height: 604px; border-radius: 34px; background: #0F1220; overflow: hidden; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 10px #23242E, 0 0 0 12px #3A3B48; }
+    .moldura iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .jogar { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; background: #FF9E1F; color: #1A1206; padding: 12px 20px; border: 0; border-radius: 999px; font: 800 14px 'Nunito', sans-serif; cursor: pointer; white-space: nowrap; }
+    .jogar:hover { background: #FFB84D; }
+    @media (max-width: 860px) {
+      .desktop { display: none; }
+      .mobile { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+
+
+<div class="site desktop">
+
+  <!-- ===== NAV ===== -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 72px; position: relative; z-index: 3;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <img src="assets/logo2.png" alt="Burger Wheels" style="width: 52px; height: 56px; object-fit: contain;">
+      <span style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.5px; color: #EDF0FA;">Burger Wheels</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 36px; font-weight: 700; font-size: 15px; color: #B3BDD1;">
+      <a class="nav" href="#jogo">O jogo</a>
+      <a class="nav" href="#acessibilidade">Acessibilidade</a>
+      <a class="nav" href="#teste">Teste agora</a>
+            <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="background: #FF9E1F; color: #1A1206; padding: 12px 22px; border-radius: 999px; font-weight: 800;">Quero jogar</a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <div style="position: relative; height: 760px; margin-top: -100px; overflow: hidden;">
+    <img src="assets/ceu.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,18,32,0.92) 0%, rgba(15,18,32,0.35) 45%, rgba(15,18,32,0.98) 100%);"></div>
+    <div class="grain" style="position: absolute; inset: 0; opacity: 0.6;"></div>
+    <!-- asfalto -->
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 96px; background: #1B1D28; border-top: 2px solid #2A2D3D;"></div>
+
+    <div style="position: relative; z-index: 2; display: flex; align-items: center; gap: 40px; padding: 150px 72px 0 72px;">
+      <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 26px; max-width: 640px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(64,217,242,0.5); color: #40D9F2; font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          <span>Protótipo jogável · MVP pronto</span>
+        </div>
+        <h1 style="font-size: 72px; line-height: 1.02; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Um runner sobre a cidade que ainda não é para todo mundo.</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #C9D0E0; max-width: 560px; text-wrap: pretty;">Um menino de cadeira de rodas corre pela Paulista. Os obstáculos não são vilões: são bocas de lobo, entulho, degraus sem rampa e carros na faixa. Bater significa que a cidade falhou.</p>
+        <div style="display: flex; align-items: center; gap: 16px; margin-top: 6px;">
+          <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="display: inline-flex; align-items: center; gap: 10px; background: #FF9E1F; color: #1A1206; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px; box-shadow: 0 12px 34px rgba(255,158,31,0.35);">
+            <span>Quero jogar</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </a>
+          <a target="_blank" rel="noopener" href="https://wa.me/?text=Testa%20o%20Burger%20Wheels%20no%20celular%3A%20https%3A%2F%2Fbilly-saga.github.io%2Fburgerwheels%2F" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #06240F; padding: 18px 26px; border-radius: 999px; font-weight: 800; font-size: 18px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 18.8z"></path></svg>
+            <span>Enviar para meu celular</span>
+          </a>
+        </div>
+        <div style="font-size: 14px; color: #8C96AD; font-weight: 600;">Grátis, sem instalar. Funciona no celular e no computador.</div>
+      </div>
+      <div style="flex: 0 0 600px; display: flex; justify-content: center; position: relative;">
+        <div style="position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(255,158,31,0.35) 0%, rgba(255,158,31,0) 70%); top: 30px;"></div>
+        <img class="flutua" src="assets/logo1.png" alt="Menino em cadeira de rodas mordendo um hambúrguer, logotipo Burger Wheels" style="width: 560px; height: auto; position: relative; filter: drop-shadow(0 30px 40px rgba(0,0,0,0.55));">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== O QUE É ===== -->
+  <div id="jogo" style="padding: 110px 72px 90px 72px; display: flex; flex-direction: column; gap: 56px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
+        <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 13px; text-transform: uppercase;">O jogo</div>
+        <h2 style="font-size: 48px; line-height: 1.1; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Corrida infinita pela Av. Paulista</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">No estilo dos runners que todo mundo conhece, com uma inversão no coração do design: a pista é o asfalto da avenida mais famosa de São Paulo, e o que atrapalha o caminho é exatamente o que atrapalha uma pessoa cadeirante na vida real.</p>
+      </div>
+      <img src="assets/logo2.png" alt="Emblema Burger Wheels" style="width: 200px; height: auto; flex: 0 0 auto;">
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #171A2B; border: 1px solid #242840;">
+        <div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(64,217,242,0.14); display: flex; align-items: center; justify-content: center; color: #40D9F2;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V8l7-5 7 5v13"></path><path d="M9 21v-6h6v6"></path><path d="M9 11h.01M15 11h.01"></path></svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 600; color: #FFFFFF;">A Paulista de verdade</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #B3BDD1;">MASP, torre espelhada, antena de rádio, banca de jornal, prédio clássico, postes, muro grafitado. Calçada de mosaico português dos dois lados e figurantes da avenida: BBoy, violeiro, moça ao celular, guarda.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #171A2B; border: 1px solid #242840;">
+        <div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(255,158,31,0.14); display: flex; align-items: center; justify-content: center; color: #FF9E1F;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"></path><path d="M12 10v4"></path><path d="M12 17h.01"></path></svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 600; color: #FFFFFF;">Os obstáculos são a inacessibilidade</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #B3BDD1;">Boca de lobo aberta, entulho de obra, bloco de concreto sem rampa, carro parado na faixa de pedestres, faixa de obras pendurada baixa. Cada batida termina com a frase: "A cidade falhou na acessibilidade".</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #171A2B; border: 1px solid #242840; position: relative; overflow: hidden;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+          <div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(64,242,102,0.14); display: flex; align-items: center; justify-content: center; color: #40F266; flex: 0 0 auto;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+          </div>
+          <img src="assets/burger.png" alt="Hambúrguer" style="width: 110px; height: auto; margin-top: -14px; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.45));">
+        </div>
+        <h3 style="font-size: 24px; font-weight: 600; color: #FFFFFF;">Hambúrgueres e superpoderes</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #B3BDD1;">Hambúrgueres valem pontos e vão virar moeda da loja. Pelo caminho: Capacete (aguenta um impacto), Propulsor Bem-te-vi (voa por cima da avenida) e Ímã (puxa os lanches). O Super Propulsor desvia da barreira, mas ela continua lá.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACESSIBILIDADE ===== -->
+  <div id="acessibilidade" style="padding: 110px 72px; background: #0B0E19; display: flex; gap: 64px; align-items: center;">
+    <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 22px;">
+      <div style="color: #40D9F2; font-weight: 800; letter-spacing: 2px; font-size: 13px; text-transform: uppercase;">Acessibilidade</div>
+      <h2 style="font-size: 52px; line-height: 1.05; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Dá para jogar de olhos fechados.</h2>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">A tese do protótipo: um runner sobre acessibilidade precisa ser acessível. O jogo tem uma camada sonora completa, feita para quem não enxerga a tela.</p>
+      <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 10px;">
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="flex: 0 0 40px; height: 40px; border-radius: 12px; background: rgba(64,217,242,0.14); color: #40D9F2; display: flex; align-items: center; justify-content: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h2"></path><path d="M8 8v8"></path><path d="M12 5v14"></path><path d="M16 8v8"></path><path d="M20 11v2"></path></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-weight: 800; font-size: 18px; color: #FFFFFF;">Radar sonoro por pista</div>
+            <div style="font-size: 16px; line-height: 1.5; color: #B3BDD1;">Cada barreira toca no lado em que está: esquerda, centro ou direita. Quanto mais perto, mais rápido o bip, como sensor de estacionamento.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="flex: 0 0 40px; height: 40px; border-radius: 12px; background: rgba(64,217,242,0.14); color: #40D9F2; display: flex; align-items: center; justify-content: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10 6z"></path><path d="M5 6v12"></path></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-weight: 800; font-size: 18px; color: #FFFFFF;">O timbre diz o que fazer</div>
+            <div style="font-size: 16px; line-height: 1.5; color: #B3BDD1;">Grave: desvie. Agudo: abaixe a cabeça. Grave duplo: empine a cadeira. Cada item tem assinatura própria: clank do capacete, zumbido do ímã, assobio do bem-te-vi.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="flex: 0 0 40px; height: 40px; border-radius: 12px; background: rgba(64,217,242,0.14); color: #40D9F2; display: flex; align-items: center; justify-content: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"></path><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-weight: 800; font-size: 18px; color: #FFFFFF;">Modo Cego com voz-guia</div>
+            <div style="font-size: 16px; line-height: 1.5; color: #B3BDD1;">Um interruptor na tela inicial reforça o guia sonoro e liga a narração: "esquerda", "empine", "capacete", "superada". Interface grande, alto contraste e cores revistas para não confundir itens.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- diagrama 3 pistas -->
+    <div style="flex: 0 0 560px; border-radius: 28px; background: #12162A; border: 1px solid #242840; padding: 28px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-weight: 800; font-size: 13px; letter-spacing: 2px; color: #8C96AD; text-transform: uppercase;">Radar sonoro</span>
+        <span style="font-weight: 800; font-size: 13px; color: #40D9F2;">Modo Cego ligado</span>
+      </div>
+      <svg width="504" height="360" viewBox="0 0 504 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- rua -->
+        <path d="M150 20 L354 20 L480 340 L24 340 Z" fill="#1B1D28"></path>
+        <path d="M218 20 L286 20 L328 340 L176 340 Z" fill="#20233080"></path>
+        <line x1="218" y1="20" x2="176" y2="340" stroke="#3A3E55" stroke-width="2" stroke-dasharray="10 10"></line>
+        <line x1="286" y1="20" x2="328" y2="340" stroke="#3A3E55" stroke-width="2" stroke-dasharray="10 10"></line>
+        <!-- barreira esquerda: perto -->
+        <rect x="88" y="222" width="86" height="34" rx="6" fill="#FF9E1F"></rect>
+        <text x="131" y="245" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="#1A1206">ENTULHO</text>
+        <path d="M70 200 q-18 39 0 78" stroke="#FF9E1F" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M52 186 q-28 53 0 106" stroke="#FF9E1F" stroke-width="3" stroke-linecap="round" opacity="0.6"></path>
+        <path d="M34 172 q-38 67 0 134" stroke="#FF9E1F" stroke-width="3" stroke-linecap="round" opacity="0.3"></path>
+        <!-- barreira direita: longe -->
+        <rect x="300" y="70" width="54" height="22" rx="5" fill="#40D9F2"></rect>
+        <text x="327" y="86" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="11" fill="#062126">FAIXA</text>
+        <path d="M372 66 q14 15 0 30" stroke="#40D9F2" stroke-width="3" stroke-linecap="round" opacity="0.7"></path>
+        <path d="M388 56 q26 25 0 50" stroke="#40D9F2" stroke-width="3" stroke-linecap="round" opacity="0.3"></path>
+        <!-- jogador -->
+        <circle cx="252" cy="300" r="26" fill="#FF9E1F"></circle>
+        <circle cx="252" cy="300" r="26" stroke="#0F1220" stroke-width="4"></circle>
+        <circle cx="240" cy="306" r="8" fill="#40D9F2"></circle>
+        <circle cx="264" cy="306" r="8" fill="#40D9F2"></circle>
+        <!-- legendas -->
+        <text x="30" y="345" font-family="Nunito, sans-serif" font-weight="800" font-size="12" fill="#8C96AD">ESQUERDA · grave, rápido</text>
+        <text x="474" y="345" text-anchor="end" font-family="Nunito, sans-serif" font-weight="800" font-size="12" fill="#8C96AD">DIREITA · agudo, lento</text>
+      </svg>
+      <div style="font-size: 14px; color: #8C96AD; line-height: 1.5;">Trilha e efeitos são sintetizados em tempo real dentro do jogo, sem arquivos de música. A narração é uma voz sintetizada em português.</div>
+    </div>
+  </div>
+
+  <!-- ===== TESTE AGORA ===== -->
+  <div id="teste" style="padding: 110px 72px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; gap: 64px; align-items: center;">
+      <!-- moldura celular -->
+      <div style="flex: 0 0 364px; width: 364px; display: flex; justify-content: center; padding: 12px;">
+        <div class="moldura" id="moldura">
+          <img src="assets/splash.jpg" alt="Tela de carregamento do Burger Wheels" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <button type="button" class="jogar" onclick="carregarJogo()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"></path></svg>
+            <span>Jogar aqui</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+        <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 13px; text-transform: uppercase;">Teste agora</div>
+        <h2 style="font-size: 46px; line-height: 1.08; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Jogue aqui no computador ou mande para o seu celular.</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">O protótipo roda direto no navegador, em formato de celular. Está no notebook? Envie o link para o seu WhatsApp e abra no telefone: a experiência foi feita para deslizar com o dedo.</p>
+        <div style="display: flex; gap: 20px; align-items: stretch;">
+          <div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 22px; background: #171A2B; border: 1px solid #242840;">
+            <div style="font-weight: 800; font-size: 16px; color: #FFFFFF;">Enviar para meu celular</div>
+            <div style="font-size: 14px; line-height: 1.5; color: #B3BDD1;">Abre o WhatsApp com o link pronto. Mande para você mesmo ou para quem quiser testar.</div>
+            <a target="_blank" rel="noopener" href="https://wa.me/?text=Testa%20o%20Burger%20Wheels%20no%20celular%3A%20https%3A%2F%2Fbilly-saga.github.io%2Fburgerwheels%2F" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #06240F; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 15px; margin-top: auto;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 18.8z"></path></svg>
+              <span>Enviar pelo WhatsApp</span>
+            </a>
+          </div>
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; border-radius: 22px; background: #FFFFFF;">
+            <img src="assets/qr.png" alt="QR code do jogo" style="width: 132px; height: 132px; image-rendering: pixelated;">
+            <div style="font-size: 12px; font-weight: 800; color: #0F1220; letter-spacing: 1px;">APONTE A CÂMERA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- controles -->
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-weight: 800; font-size: 13px; letter-spacing: 2px; color: #8C96AD; text-transform: uppercase;">Como jogar</div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"></path><path d="M8 7l-5 5 5 5"></path><path d="M16 7l5 5-5 5"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 13px; font-weight: 800; color: #EDF0FA;">Deslize aos lados</div><div style="font-size: 12px; color: #8C96AD;">troca de pista</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4"></path><path d="M6 10l6-6 6 6"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 13px; font-weight: 800; color: #EDF0FA;">Deslize para cima</div><div style="font-size: 12px; color: #8C96AD;">abaixa a cabeça</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16"></path><path d="M6 14l6 6 6-6"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 13px; font-weight: 800; color: #EDF0FA;">Deslize para baixo</div><div style="font-size: 12px; color: #8C96AD;">empina a cadeira</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 13px; font-weight: 800; color: #EDF0FA;">Toque duplo</div><div style="font-size: 12px; color: #8C96AD;">Super Propulsor</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 13px; font-weight: 800; color: #EDF0FA;">Segure o canto</div><div style="font-size: 12px; color: #8C96AD;">acelera</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== O QUE JÁ ESTÁ PRONTO ===== -->
+  <div style="padding: 100px 72px; background: #0B0E19; display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
+      <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 13px; text-transform: uppercase;">O que já existe</div>
+      <h2 style="font-size: 48px; line-height: 1.1; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Não é uma ideia no papel. É um jogo que já roda.</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">O protótipo está publicado, jogável no celular e no computador, com a tese central já funcionando: um runner sobre acessibilidade que pessoas cegas conseguem jogar. Feito em Unity, a mesma engine dos grandes jogos mobile, com cenário 3D da Paulista, sistema de som próprio e pipeline de produção pronto para escalar.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px; border-radius: 20px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 44px; font-weight: 700; color: #FF9E1F; line-height: 1;">5</div>
+        <div style="font-weight: 800; font-size: 16px; color: #FFFFFF;">tipos de barreira urbana</div>
+        <div style="font-size: 14px; color: #8C96AD; line-height: 1.45;">boca de lobo, entulho, degrau, carro na faixa, faixa de obras</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px; border-radius: 20px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 44px; font-weight: 700; color: #FF9E1F; line-height: 1;">4</div>
+        <div style="font-weight: 800; font-size: 16px; color: #FFFFFF;">itens coletáveis</div>
+        <div style="font-size: 14px; color: #8C96AD; line-height: 1.45;">hambúrguer, Capacete, Propulsor Bem-te-vi, Ímã</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px; border-radius: 20px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 44px; font-weight: 700; color: #FF9E1F; line-height: 1;">22</div>
+        <div style="font-weight: 800; font-size: 16px; color: #FFFFFF;">modelos 3D no cenário</div>
+        <div style="font-size: 14px; color: #8C96AD; line-height: 1.45;">personagem, prédios da Paulista, props de rua, figurantes e itens</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px; border-radius: 20px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 44px; font-weight: 700; color: #FF9E1F; line-height: 1;">3</div>
+        <div style="font-weight: 800; font-size: 16px; color: #FFFFFF;">níveis de velocidade</div>
+        <div style="font-size: 14px; color: #8C96AD; line-height: 1.45;">fácil, médio e difícil, mais aceleração por toque</div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 40px; font-size: 16px; color: #C9D0E0; font-weight: 600;">
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Modo Cego com radar sonoro e voz-guia</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Trilha e efeitos sintetizados em tempo real</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Geração procedural com pista segura garantida</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Contador de barreiras superadas e recorde</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Mensagem educativa a cada batida</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Publicado na web, rodando em celular e desktop</span></div>
+    </div>
+  </div>
+
+  <!-- ===== QUEM FAZ + FOOTER ===== -->
+  <div style="padding: 80px 72px 60px 72px; background: #0B0E19; display: flex; flex-direction: column; gap: 48px;">
+    <div style="display: flex; gap: 48px; align-items: center;">
+      <div style="flex: 0 0 160px; height: 160px; border-radius: 50%; border: 3px solid #FF9E1F; overflow: hidden;"><img src="assets/billy_sq.jpg" alt="Billy Saga" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div style="display: flex; flex-direction: column; gap: 10px; max-width: 900px;">
+        <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 13px; text-transform: uppercase;">Quem faz</div>
+        <h3 style="font-size: 30px; font-weight: 600; color: #FFFFFF;">Billy Saga · Agô Startup</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B3BDD1; text-wrap: pretty;">CEO da Agô Startup, especialista em diversidade, equidade e inclusão pela Claro, formado em Inteligência Artificial pela PUC, No Code e Human Studio e pós-graduado em Neurociência e Psicologia Positiva pela PUC. Coautor do livro Manual Anticapacitista, com Carol Ignarra. Speaker TEDx, músico e curador musical da Natura Musical, bacharel em Comunicação Social, fundador da ONG Movimento SuperAção e Personalidade 2018 no Prêmio Ações Inclusivas do Governo do Estado de SP.</p>
+        <div style="display: flex; gap: 24px; font-weight: 800; font-size: 15px;">
+          <a href="mailto:agostartup@gmail.com">agostartup@gmail.com</a>
+          <a target="_blank" rel="noopener" href="https://wa.me/5511994340352">WhatsApp (11) 99434-0352</a>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 28px; border-top: 1px solid #242840; text-align: center;">
+      <img src="assets/logo2.png" alt="" style="width: 56px; height: 60px; object-fit: contain;">
+      <span style="font-size: 14px; color: #8C96AD; font-weight: 600;">Burger Wheels · um runner sobre acessibilidade urbana · 2026</span>
+      <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="font-size: 14px; font-weight: 800;">billy-saga.github.io/burgerwheels</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="site mobile">
+
+  <!-- NAV -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; position: relative; z-index: 3;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/logo2.png" alt="Burger Wheels" style="width: 36px; height: 38px; object-fit: contain;">
+      <span style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #EDF0FA;">Burger Wheels</span>
+    </div>
+    <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="background: #FF9E1F; color: #1A1206; padding: 10px 16px; border-radius: 999px; font-weight: 800; font-size: 13px;">Quero jogar</a>
+  </div>
+
+  <!-- HERO -->
+  <div style="position: relative; overflow: hidden; margin-top: -70px; padding: 100px 20px 40px 20px;">
+    <img src="assets/ceu.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,18,32,0.95) 0%, rgba(15,18,32,0.4) 40%, rgba(15,18,32,0.98) 100%);"></div>
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+      <img src="assets/logo1.png" alt="Menino em cadeira de rodas mordendo um hambúrguer, logotipo Burger Wheels" style="width: 300px; height: auto; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));">
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(64,217,242,0.5); color: #40D9F2; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">Protótipo jogável · MVP pronto</div>
+      <h1 style="font-size: 38px; line-height: 1.05; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Um runner sobre a cidade que ainda não é para todo mundo.</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #C9D0E0; text-wrap: pretty;">Um menino de cadeira de rodas corre pela Paulista. Os obstáculos são bocas de lobo, entulho, degraus sem rampa e carros na faixa. Bater significa que a cidade falhou.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+        <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF9E1F; color: #1A1206; padding: 16px 24px; border-radius: 999px; font-weight: 800; font-size: 17px; box-shadow: 0 12px 34px rgba(255,158,31,0.35);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"></path></svg>
+          <span>Quero jogar</span>
+        </a>
+        <a target="_blank" rel="noopener" href="https://wa.me/?text=Testa%20o%20Burger%20Wheels%20no%20celular%3A%20https%3A%2F%2Fbilly-saga.github.io%2Fburgerwheels%2F" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #06240F; padding: 16px 24px; border-radius: 999px; font-weight: 800; font-size: 17px;">Enviar para meu celular</a>
+      </div>
+      <div style="font-size: 13px; color: #8C96AD; font-weight: 600;">Grátis, sem instalar. Deslize com o dedo.</div>
+    </div>
+  </div>
+
+  <!-- O QUE É -->
+  <div style="padding: 56px 20px 40px 20px; display: flex; flex-direction: column; gap: 22px;">
+    <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">O jogo</div>
+    <h2 style="font-size: 30px; line-height: 1.1; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Corrida infinita pela Av. Paulista</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">A pista é o asfalto da avenida mais famosa de São Paulo. O que atrapalha o caminho é exatamente o que atrapalha uma pessoa cadeirante na vida real.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: #171A2B; border: 1px solid #242840;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(64,217,242,0.14); display: flex; align-items: center; justify-content: center; color: #40D9F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V8l7-5 7 5v13"></path><path d="M9 21v-6h6v6"></path></svg>
+          </div>
+          <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF;">A Paulista de verdade</h3>
+        </div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #B3BDD1;">MASP, torre espelhada, antena, banca de jornal, postes, muro grafitado e figurantes da avenida.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: #171A2B; border: 1px solid #242840;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255,158,31,0.14); display: flex; align-items: center; justify-content: center; color: #FF9E1F;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"></path><path d="M12 10v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF;">Os obstáculos são a inacessibilidade</h3>
+        </div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #B3BDD1;">Boca de lobo, entulho de obra, bloco sem rampa, carro na faixa, faixa de obras baixa. Cada batida termina com "A cidade falhou na acessibilidade".</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: #171A2B; border: 1px solid #242840; position: relative; overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 12px; padding-right: 96px; position: relative;">
+          <img src="assets/burger.png" alt="Hambúrguer" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 84px; height: auto; filter: drop-shadow(0 8px 14px rgba(0,0,0,0.45));">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(64,242,102,0.14); display: flex; align-items: center; justify-content: center; color: #40F266;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+          </div>
+          <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF;">Hambúrgueres e superpoderes</h3>
+        </div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #B3BDD1;">Capacete aguenta um impacto, Propulsor Bem-te-vi voa por cima da avenida, Ímã puxa os lanches. O Super Propulsor desvia da barreira, mas ela continua lá.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACESSIBILIDADE -->
+  <div style="padding: 56px 20px; background: #0B0E19; display: flex; flex-direction: column; gap: 20px;">
+    <div style="color: #40D9F2; font-weight: 800; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">Acessibilidade</div>
+    <h2 style="font-size: 34px; line-height: 1.05; font-weight: 700; color: #FFFFFF;">Dá para jogar de olhos fechados.</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #B3BDD1; text-wrap: pretty;">Um runner sobre acessibilidade precisa ser acessível. O jogo tem uma camada sonora completa, feita para quem não enxerga a tela.</p>
+    <div style="border-radius: 22px; background: #12162A; border: 1px solid #242840; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+      <svg width="314" height="224" viewBox="0 0 504 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 20 L354 20 L480 340 L24 340 Z" fill="#1B1D28"></path>
+        <line x1="218" y1="20" x2="176" y2="340" stroke="#3A3E55" stroke-width="2" stroke-dasharray="10 10"></line>
+        <line x1="286" y1="20" x2="328" y2="340" stroke="#3A3E55" stroke-width="2" stroke-dasharray="10 10"></line>
+        <rect x="88" y="222" width="86" height="34" rx="6" fill="#FF9E1F"></rect>
+        <path d="M70 200 q-18 39 0 78" stroke="#FF9E1F" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M52 186 q-28 53 0 106" stroke="#FF9E1F" stroke-width="4" stroke-linecap="round" opacity="0.6"></path>
+        <path d="M34 172 q-38 67 0 134" stroke="#FF9E1F" stroke-width="4" stroke-linecap="round" opacity="0.3"></path>
+        <rect x="300" y="70" width="54" height="22" rx="5" fill="#40D9F2"></rect>
+        <path d="M372 66 q14 15 0 30" stroke="#40D9F2" stroke-width="4" stroke-linecap="round" opacity="0.7"></path>
+        <path d="M388 56 q26 25 0 50" stroke="#40D9F2" stroke-width="4" stroke-linecap="round" opacity="0.3"></path>
+        <circle cx="252" cy="300" r="26" fill="#FF9E1F"></circle>
+        <circle cx="240" cy="306" r="8" fill="#40D9F2"></circle>
+        <circle cx="264" cy="306" r="8" fill="#40D9F2"></circle>
+      </svg>
+      <div style="font-size: 13px; color: #8C96AD; line-height: 1.5;">Cada barreira toca no lado em que está; mais perto, mais rápido.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="font-weight: 800; font-size: 17px; color: #FFFFFF;">Radar sonoro por pista</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #B3BDD1;">Esquerda, centro ou direita, como sensor de estacionamento.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="font-weight: 800; font-size: 17px; color: #FFFFFF;">O timbre diz o que fazer</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #B3BDD1;">Grave: desvie. Agudo: abaixe. Grave duplo: empine. Cada item tem som próprio.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="font-weight: 800; font-size: 17px; color: #FFFFFF;">Modo Cego com voz-guia</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #B3BDD1;">Narração em português: "esquerda", "empine", "capacete", "superada". Interface grande e de alto contraste.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTE AGORA -->
+  <div style="padding: 56px 20px; display: flex; flex-direction: column; gap: 20px;">
+    <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">Teste agora</div>
+    <h2 style="font-size: 30px; line-height: 1.1; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Jogue agora ou mande para alguém testar.</h2>
+    <a target="_blank" rel="noopener" href="https://billy-saga.github.io/burgerwheels/" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF9E1F; color: #1A1206; padding: 16px 24px; border-radius: 999px; font-weight: 800; font-size: 17px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"></path></svg>
+      <span>Abrir o jogo</span>
+    </a>
+    <a target="_blank" rel="noopener" href="https://wa.me/?text=Testa%20o%20Burger%20Wheels%20no%20celular%3A%20https%3A%2F%2Fbilly-saga.github.io%2Fburgerwheels%2F" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #06240F; padding: 16px 24px; border-radius: 999px; font-weight: 800; font-size: 17px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 18.8z"></path></svg>
+      <span>Enviar pelo WhatsApp</span>
+    </a>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #12162A; border: 1px solid #242840;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"></path><path d="M8 7l-5 5 5 5"></path><path d="M16 7l5 5-5 5"></path></svg>
+        <div style="font-size: 12px; font-weight: 800; color: #EDF0FA; line-height: 1.3;">Deslize aos lados<br><span style="color: #8C96AD; font-weight: 600;">troca de pista</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #12162A; border: 1px solid #242840;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4"></path><path d="M6 10l6-6 6 6"></path></svg>
+        <div style="font-size: 12px; font-weight: 800; color: #EDF0FA; line-height: 1.3;">Para cima<br><span style="color: #8C96AD; font-weight: 600;">abaixa a cabeça</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #12162A; border: 1px solid #242840;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16"></path><path d="M6 14l6 6 6-6"></path></svg>
+        <div style="font-size: 12px; font-weight: 800; color: #EDF0FA; line-height: 1.3;">Para baixo<br><span style="color: #8C96AD; font-weight: 600;">empina a cadeira</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #12162A; border: 1px solid #242840;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9E1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
+        <div style="font-size: 12px; font-weight: 800; color: #EDF0FA; line-height: 1.3;">Toque duplo<br><span style="color: #8C96AD; font-weight: 600;">Super Propulsor</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- O QUE JÁ EXISTE -->
+  <div style="padding: 56px 20px; background: #0B0E19; display: flex; flex-direction: column; gap: 20px;">
+    <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">O que já existe</div>
+    <h2 style="font-size: 30px; line-height: 1.1; font-weight: 700; color: #FFFFFF; text-wrap: balance;">Não é uma ideia no papel. É um jogo que já roda.</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 36px; font-weight: 700; color: #FF9E1F; line-height: 1;">5</div>
+        <div style="font-weight: 800; font-size: 14px; color: #FFFFFF;">barreiras urbanas</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 36px; font-weight: 700; color: #FF9E1F; line-height: 1;">4</div>
+        <div style="font-weight: 800; font-size: 14px; color: #FFFFFF;">itens coletáveis</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 36px; font-weight: 700; color: #FF9E1F; line-height: 1;">22</div>
+        <div style="font-weight: 800; font-size: 14px; color: #FFFFFF;">modelos 3D</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #12162A; border: 1px solid #242840;">
+        <div style="font-family: 'Fredoka', sans-serif; font-size: 36px; font-weight: 700; color: #FF9E1F; line-height: 1;">3</div>
+        <div style="font-weight: 800; font-size: 14px; color: #FFFFFF;">níveis de velocidade</div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #C9D0E0; font-weight: 600;">
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Modo Cego com radar sonoro e voz-guia</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Trilha e efeitos sintetizados em tempo real</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Geração procedural com pista segura garantida</span></div>
+      <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#40F266" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Publicado na web, roda em celular e desktop</span></div>
+    </div>
+  </div>
+
+  <!-- QUEM FAZ + FOOTER -->
+  <div style="padding: 48px 20px 36px 20px; background: #0B0E19; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;">
+      <div style="width: 132px; height: 132px; border-radius: 50%; border: 3px solid #FF9E1F; overflow: hidden;"><img src="assets/billy_sq.jpg" alt="Billy Saga" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div style="color: #FF9E1F; font-weight: 800; letter-spacing: 2px; font-size: 12px; text-transform: uppercase;">Quem faz</div>
+      <h3 style="font-size: 24px; font-weight: 600; color: #FFFFFF;">Billy Saga · Agô Startup</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B3BDD1; text-wrap: pretty;">CEO da Agô Startup, especialista em diversidade, equidade e inclusão pela Claro, formado em Inteligência Artificial pela PUC, No Code e Human Studio e pós-graduado em Neurociência e Psicologia Positiva pela PUC. Coautor do livro Manual Anticapacitista, com Carol Ignarra. Speaker TEDx, músico e curador musical da Natura Musical, bacharel em Comunicação Social, fundador da ONG Movimento SuperAção e Personalidade 2018 no Prêmio Ações Inclusivas do Governo do Estado de SP.</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; font-weight: 800; font-size: 15px;">
+        <a href="mailto:agostartup@gmail.com">agostartup@gmail.com</a>
+        <a target="_blank" rel="noopener" href="https://wa.me/5511994340352">WhatsApp (11) 99434-0352</a>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 20px; border-top: 1px solid #242840; text-align: center;">
+      <img src="assets/logo2.png" alt="" style="width: 48px; height: 52px; object-fit: contain;">
+      <span style="font-size: 12px; color: #8C96AD; font-weight: 600;">Burger Wheels · um runner sobre acessibilidade urbana · 2026</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function carregarJogo() {
+    document.getElementById('moldura').innerHTML = '<iframe title="Burger Wheels" src="https://billy-saga.github.io/burgerwheels/" allow="autoplay; fullscreen"></iframe>';
+  }
+</script>
+</body>
+</html>
